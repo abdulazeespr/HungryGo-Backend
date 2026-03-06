@@ -13,4 +13,4 @@ const globalErrorHandler = (err: any, req: any, res: any,next: any) => {
 }
 
 
-export default globalErrorHandler;
+export{ globalErrorHandler};

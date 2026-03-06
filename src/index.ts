@@ -1,9 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import globalErrorHandler from './middleware/globalErrorHandler.ts';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import {globalErrorHandler} from './middleware/globalErrorHandler';
+import { prisma } from "./lib/prisma";
 
 
 const app = express();
