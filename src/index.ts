@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import {globalErrorHandler} from './middleware/globalErrorHandler';
 import { prisma } from "./lib/prisma";
+import authRoutes from './routes/authRoutes';
+import orderRoutes from './routes/orderRoutes';
 
 
 const app = express();
@@ -17,6 +19,9 @@ app.get('/', (req, res) => {
    
   res.json({ message: 'Welcome to the HungryGo API!', user });
 });
+
+app.use('/api/auth', authRoutes);
+app.use('/api/order', orderRoutes);
 
 
 app.use(globalErrorHandler);

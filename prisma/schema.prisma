@@ -25,3 +25,30 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
+
+
+model Order {
+  id              String   @id @default(uuid())
+  customerName    String
+  customerPhone   String
+  customerGuest   Int
+  orderStatus     String
+  orderDate       DateTime @default(now())
+  billTotal       Float
+  billTax         Float
+  billTotalWithTax Float
+  items           OrderItem[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model OrderItem {
+  id        String   @id @default(uuid())
+  order     Order    @relation(fields: [orderId], references: [id])
+  orderId   String
+  name      String
+  quantity  Int
+  price     Float
+}
+
+
