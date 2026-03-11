@@ -38,6 +38,8 @@ model Order {
   billTax         Float
   billTotalWithTax Float
   items           OrderItem[]
+  tableNumber       Int
+  table           Table    @relation(fields: [tableNumber], references: [tableNumber])
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 }
@@ -49,6 +51,15 @@ model OrderItem {
   name      String
   quantity  Int
   price     Float
+}
+
+model Table {
+  id        String   @id @default(uuid())
+  tableNumber Int      @unique
+  capacity  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  orders    Order[]
 }
 
 
